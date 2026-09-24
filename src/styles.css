@@ -1,56 +1,102 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap");
 
 :root {
   font-family: Inter, system-ui, sans-serif;
-  color: #f5f7fa;
-  background: #0a1017;
+  color: #f4f5f6;
+  background: #080d13;
   font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  background: #080d13;
+}
+
 body {
   margin: 0;
   min-width: 320px;
-  background: #0a1017;
+  background: #080d13;
+}
+
+button,
+input {
+  font: inherit;
 }
 
 button {
-  font: inherit;
+  border: 0;
 }
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #ff4655;
+  outline-offset: 2px;
+}
+
+/* =========================================
+   APP
+========================================= */
 
 .app-shell {
   min-height: 100vh;
   background:
     radial-gradient(
-      circle at 50% -10%,
-      rgba(255, 70, 85, 0.16),
-      transparent 38%
+      ellipse at 50% -15%,
+      rgba(255, 70, 85, 0.2),
+      transparent 45%
     ),
-    linear-gradient(
-      180deg,
-      #0f1923 0%,
-      #0a1017 60%
-    );
+    radial-gradient(
+      ellipse at 100% 45%,
+      rgba(44, 71, 98, 0.15),
+      transparent 35%
+    ),
+    #080d13;
+  position: relative;
+  overflow: hidden;
 }
+
+.app-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image:
+    linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* =========================================
+   TOP BAR
+========================================= */
 
 .topbar {
   height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 6vw;
+  padding: 0 5vw;
   border-bottom: 1px solid rgba(255,255,255,.07);
-  background: rgba(7,12,18,.7);
-  backdrop-filter: blur(14px);
+  background: rgba(6,10,15,.82);
+  backdrop-filter: blur(18px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
+  color: white;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
 }
 
 .brand-mark {
@@ -61,23 +107,26 @@ button {
   background: #ff4655;
   color: white;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 26px;
-  font-weight: 800;
+  font-size: 27px;
+  font-weight: 900;
   transform: skew(-8deg);
+  box-shadow: 0 0 24px rgba(255,70,85,.2);
 }
 
 .brand-name {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 25px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 2px;
+  line-height: .9;
 }
 
 .brand-subtitle {
-  color: #81909e;
-  font-size: 10px;
+  color: #667481;
+  font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.3px;
+  margin-top: 5px;
 }
 
 .top-actions {
@@ -88,34 +137,50 @@ button {
 .icon-button {
   width: 42px;
   height: 42px;
+  display: grid;
+  place-items: center;
   border: 1px solid rgba(255,255,255,.08);
-  border-radius: 10px;
-  background: #111c27;
-  color: white;
+  border-radius: 9px;
+  background: rgba(18,28,39,.8);
+  color: #a7b0b8;
   cursor: pointer;
+  transition: .2s ease;
 }
 
 .icon-button:hover {
-  border-color: #ff4655;
+  color: white;
+  border-color: rgba(255,70,85,.6);
+  background: rgba(255,70,85,.1);
 }
 
+/* =========================================
+   MAIN
+========================================= */
+
 .main-content {
-  width: min(1080px, 88vw);
+  width: min(1180px, 90vw);
   margin: 0 auto;
-  padding: 72px 0 48px;
+  padding: 70px 0 50px;
+  position: relative;
+  z-index: 1;
 }
+
+/* =========================================
+   HERO
+========================================= */
 
 .hero {
   text-align: center;
-  max-width: 760px;
-  margin: 0 auto 64px;
+  max-width: 780px;
+  margin: 0 auto 70px;
 }
 
 .eyebrow {
-  color: #ff6572;
-  font-size: 11px;
+  color: #ff5968;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
 }
 
 .hero h1,
@@ -123,13 +188,13 @@ h2,
 h3 {
   font-family: "Barlow Condensed", sans-serif;
   text-transform: uppercase;
-  margin: 10px 0;
 }
 
 .hero h1 {
-  font-size: clamp(42px, 7vw, 76px);
-  line-height: .95;
+  font-size: clamp(45px, 7vw, 78px);
+  line-height: .9;
   letter-spacing: -1px;
+  margin: 13px 0 18px;
 }
 
 .hero h1 span {
@@ -137,40 +202,45 @@ h3 {
 }
 
 .hero p {
-  color: #9aa8b5;
+  color: #8794a0;
   line-height: 1.7;
   max-width: 650px;
-  margin: 18px auto 28px;
+  margin: 0 auto 30px;
+  font-size: 14px;
 }
 
 .streak-card {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.08);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   text-align: left;
 }
 
 .streak-card > div {
-  background: #111a24;
+  background: rgba(15,23,32,.9);
   padding: 18px 20px;
 }
 
 .streak-card strong {
   display: block;
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 5px;
 }
 
 .streak-card span {
-  color: #748290;
-  font-size: 11px;
+  color: #667481;
+  font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.4px;
 }
+
+/* =========================================
+   MODES
+========================================= */
 
 .section-heading {
   display: flex;
@@ -180,137 +250,889 @@ h3 {
 }
 
 .section-heading h2 {
-  font-size: 34px;
+  margin: 5px 0 0;
+  font-size: 35px;
 }
 
 .mode-count {
-  color: #748290;
-  font-size: 12px;
+  color: #64717e;
+  font-size: 10px;
+  letter-spacing: 1.5px;
 }
 
 .mode-grid {
   display: grid;
-  grid-template-columns: repeat(5,1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 12px;
 }
 
 .mode-card {
-  min-height: 235px;
-  padding: 22px;
+  min-height: 230px;
+  padding: 21px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
   color: white;
-  background: linear-gradient(
-    160deg,
-    #172331,
-    #101821
-  );
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 14px;
+  background:
+    linear-gradient(145deg, rgba(25,36,48,.98), rgba(12,19,27,.98));
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
   transition:
-    transform .18s,
-    border-color .18s,
-    background .18s;
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
 }
 
-.mode-card:hover,
-.mode-card.selected {
-  transform: translateY(-4px);
-  border-color: #ff4655;
-  background: linear-gradient(
-    160deg,
-    #202b38,
-    #131c25
-  );
+.mode-card::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  right: -45px;
+  top: -45px;
+  background: #ff4655;
+  opacity: 0;
+  filter: blur(45px);
+  transition: opacity .2s ease;
+}
+
+.mode-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,70,85,.7);
+  box-shadow: 0 15px 40px rgba(0,0,0,.3);
+}
+
+.mode-card:hover::before {
+  opacity: .25;
 }
 
 .mode-icon {
-  font-size: 32px;
-  margin-bottom: auto;
+  font-size: 29px;
+  position: relative;
 }
 
 .mode-title {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 23px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  margin-top: 28px;
+  margin-top: auto;
+  position: relative;
 }
 
 .mode-description {
-  color: #82909d;
-  font-size: 12px;
+  color: #75828e;
+  font-size: 11px;
   line-height: 1.5;
   margin-top: 7px;
-  min-height: 54px;
+  min-height: 51px;
+  position: relative;
 }
 
 .play-label {
-  color: #ff6572;
-  font-size: 11px;
+  color: #ff5968;
+  font-size: 9px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 18px;
+  letter-spacing: 1.5px;
+  margin-top: 16px;
+  position: relative;
 }
 
+/* =========================================
+   COMING SOON
+========================================= */
+
 .coming-soon {
-  margin-top: 42px;
-  padding: 24px;
+  margin-top: 40px;
+  padding: 22px 25px;
   display: flex;
   gap: 18px;
   align-items: center;
-  border: 1px solid rgba(255,70,85,.22);
-  background: rgba(255,70,85,.05);
-  border-radius: 14px;
+  border: 1px solid rgba(255,70,85,.18);
+  background: rgba(255,70,85,.035);
+  border-radius: 12px;
 }
 
 .coming-icon {
-  font-size: 28px;
+  font-size: 26px;
 }
 
 .coming-soon h3 {
-  font-size: 24px;
+  font-size: 23px;
   margin: 4px 0;
 }
 
 .coming-soon p {
-  color: #8996a3;
+  color: #788590;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
+
+/* =========================================
+   AGENT GAME
+========================================= */
+
+.agent-game {
+  width: 100%;
+}
+
+.back-button {
+  background: transparent;
+  color: #71808c;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  cursor: pointer;
+  padding: 0;
+  transition: color .2s ease;
+}
+
+.back-button span {
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.back-button:hover {
+  color: white;
+}
+
+.agent-game-heading {
+  margin-top: 30px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.agent-game-heading h1 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(40px, 5vw, 62px);
+  margin: 5px 0 6px;
+  line-height: .9;
+}
+
+.agent-game-heading p {
+  color: #788590;
   font-size: 13px;
-  line-height: 1.6;
+  margin: 0;
+}
+
+.attempt-counter {
+  text-align: right;
+  border-left: 1px solid rgba(255,255,255,.08);
+  padding-left: 25px;
+}
+
+.attempt-counter span {
+  display: block;
+  color: #65727d;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.attempt-counter strong {
+  display: block;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 35px;
+  color: white;
+  margin-top: 2px;
+}
+
+/* =========================================
+   AGENT LAYOUT
+========================================= */
+
+.agent-layout {
+  display: grid;
+  grid-template-columns: minmax(350px, 0.85fr) minmax(450px, 1.15fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* =========================================
+   PORTRAIT
+========================================= */
+
+.portrait-card {
+  min-height: 590px;
+  background:
+    linear-gradient(145deg, #131f2b, #0b1118);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: 14px;
+  overflow: hidden;
+  position: relative;
+}
+
+.portrait-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 35%,
+      rgba(255,255,255,.025) 50%,
+      transparent 65%
+    );
+}
+
+.portrait-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 6px 12px;
+}
+
+.portrait-label {
+  color: #697784;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.portrait-number {
+  color: #35414d;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.agent-portrait {
+  height: 505px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(255,70,85,.22),
+      transparent 42%
+    ),
+    #111b25;
+}
+
+.agent-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: blur(22px) brightness(.55) saturate(.65);
+  transform: scale(1.1);
+  transition:
+    filter .7s ease,
+    transform .8s ease;
+}
+
+.agent-portrait.reveal-1 img {
+  filter: blur(14px) brightness(.62) saturate(.72);
+  transform: scale(1.08);
+}
+
+.agent-portrait.reveal-2 img {
+  filter: blur(7px) brightness(.72) saturate(.82);
+  transform: scale(1.05);
+}
+
+.agent-portrait.reveal-3 img {
+  filter: blur(2px) brightness(.88) saturate(.95);
+  transform: scale(1.02);
+}
+
+.agent-portrait.revealed img {
+  filter: none;
+  transform: scale(1);
+}
+
+.portrait-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5,9,13,.08),
+      transparent 35%,
+      rgba(5,9,13,.9) 100%
+    );
+  pointer-events: none;
+}
+
+.mystery-mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.mystery-mark span {
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(5,9,13,.55);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  color: rgba(255,255,255,.75);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 45px;
+  font-weight: 800;
+  box-shadow: 0 0 50px rgba(0,0,0,.5);
+}
+
+.portrait-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 22px;
+  right: 22px;
+  z-index: 3;
+}
+
+.portrait-role {
+  color: #ff5968;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.portrait-name {
+  color: white;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 38px;
+  font-weight: 900;
+  margin-top: 3px;
+}
+
+.reveal-progress {
+  display: flex;
+  gap: 5px;
+  margin: 12px 3px 0;
+}
+
+.reveal-progress span {
+  height: 3px;
+  flex: 1;
+  background: #202b35;
+  transition: background .3s ease;
+}
+
+.reveal-progress span.active {
+  background: #ff4655;
+}
+
+.reveal-text {
+  color: #5f6d78;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 9px 3px 0;
+}
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.clue-panel,
+.guess-panel,
+.history-panel {
+  background: rgba(14,22,31,.94);
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.panel-heading,
+.guess-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 17px;
+}
+
+.panel-heading h2,
+.guess-heading h2 {
+  font-size: 26px;
+  margin: 4px 0 0;
+  line-height: 1;
+}
+
+.classified,
+.remaining,
+.history-count {
+  color: #56636e;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   CLUES
+========================================= */
+
+.clue-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.clue-card {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px;
+  border: 1px solid rgba(255,255,255,.06);
+  background: rgba(8,14,20,.8);
+  border-radius: 8px;
+  transition: border-color .3s ease, background .3s ease;
+}
+
+.clue-card.revealed {
+  border-color: rgba(255,70,85,.18);
+  background: rgba(255,70,85,.035);
+}
+
+.clue-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: #64727e;
+  background: #17222d;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+.clue-card.revealed .clue-icon {
+  color: #ff5968;
+  background: rgba(255,70,85,.1);
+}
+
+.clue-card small {
+  display: block;
+  color: #56636f;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  margin-bottom: 5px;
+}
+
+.clue-card strong {
+  display: block;
+  color: #687581;
+  font-size: 11px;
+}
+
+.clue-card.revealed strong {
+  color: #e8ebed;
+}
+
+.hidden-clue {
+  opacity: .55;
+}
+
+/* =========================================
+   GUESS INPUT
+========================================= */
+
+.guess-panel {
+  position: relative;
+}
+
+.guess-heading {
+  margin-bottom: 12px;
+}
+
+.guess-input-wrap {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  border: 1px solid #2b3742;
+  background: #080e14;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.guess-input-wrap:focus-within {
+  border-color: #ff4655;
+  box-shadow: 0 0 0 3px rgba(255,70,85,.08);
+}
+
+.search-icon {
+  color: #687581;
+  font-size: 23px;
+  margin-left: 15px;
+}
+
+.guess-input-wrap input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: white;
+  padding: 0 12px;
+  font-size: 13px;
+}
+
+.guess-input-wrap input::placeholder {
+  color: #53616c;
+}
+
+.guess-button {
+  height: 100%;
+  padding: 0 23px;
+  background: #ff4655;
+  color: white;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.guess-button:hover:not(:disabled) {
+  background: #ff5968;
+}
+
+.guess-button:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   SUGGESTIONS
+========================================= */
+
+.suggestions {
+  position: relative;
+  z-index: 10;
+  margin-top: 5px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #101922;
+  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+}
+
+.suggestions button {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: #dfe3e6;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+
+.suggestions button:last-child {
+  border-bottom: 0;
+}
+
+.suggestions button:hover {
+  background: rgba(255,70,85,.08);
+}
+
+.suggestion-avatar,
+.agent-mini-avatar {
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  background: #263541;
+  color: #9ca8b2;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+}
+
+.suggestion-avatar {
+  width: 28px;
+  height: 28px;
+}
+
+.suggestion-role {
+  margin-left: auto;
+  color: #596773;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+}
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.game-message {
+  margin-top: 9px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255,70,85,.08);
+  border: 1px solid rgba(255,70,85,.12);
+  color: #ff8b96;
+}
+
+.game-message.success {
+  color: #75e0a8;
+  background: rgba(53,211,126,.07);
+  border-color: rgba(53,211,126,.14);
+}
+
+.game-message span {
+  font-weight: 900;
+}
+
+/* =========================================
+   HISTORY
+========================================= */
+
+.history-panel {
+  margin-top: 16px;
+}
+
+.guess-table {
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.guess-table-header,
+.guess-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+}
+
+.guess-table-header {
+  min-height: 35px;
+  align-items: center;
+  padding: 0 14px;
+  background: #111b24;
+  color: #56636f;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.guess-row {
+  min-height: 52px;
+  align-items: center;
+  padding: 0 14px;
+  border-top: 1px solid rgba(255,255,255,.045);
+  font-size: 10px;
+}
+
+.guess-agent-name {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.agent-mini-avatar {
+  width: 29px;
+  height: 29px;
+}
+
+.guess-row .match {
+  color: #6be09e;
+}
+
+.guess-row .no-match {
+  color: #71808c;
+}
+
+.guess-row .match span,
+.guess-row .no-match span {
+  display: inline-block;
+  width: 18px;
+  font-weight: 900;
+}
+
+.empty-history {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(255,255,255,.07);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.empty-icon {
+  color: #35424d;
+  font-size: 28px;
+}
+
+.empty-history strong {
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+.empty-history p {
+  color: #52606c;
+  font-size: 10px;
   margin: 5px 0 0;
 }
+
+/* =========================================
+   GAME OVER
+========================================= */
+
+.game-over-card {
+  margin-top: 14px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(255,70,85,.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,70,85,.08),
+      rgba(255,70,85,.025)
+    );
+}
+
+.game-over-card h3 {
+  font-size: 24px;
+  margin: 5px 0 0;
+}
+
+.game-over-card button,
+.return-button {
+  padding: 12px 17px;
+  background: #ff4655;
+  color: white;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+}
+
+.game-over-card button:hover,
+.return-button:hover {
+  background: #ff5968;
+}
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.placeholder-panel {
+  min-height: 500px;
+}
+
+.placeholder-game {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.placeholder-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.placeholder-game h2 {
+  font-size: 55px;
+  margin: 8px 0;
+}
+
+.placeholder-game p {
+  color: #75828d;
+  max-width: 480px;
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.return-button {
+  margin-top: 15px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
 
 footer {
   padding: 30px 20px 45px;
   text-align: center;
-  color: #52606d;
-  font-size: 11px;
+  color: #46525d;
+  font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.4px;
 }
 
-@media (max-width: 850px) {
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
   .mode-grid {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .agent-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-card {
+    min-height: 550px;
+  }
+
+  .agent-portrait {
+    height: 470px;
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 700px) {
   .topbar {
     padding: 0 20px;
   }
 
   .main-content {
-    width: min(92vw, 520px);
-    padding-top: 48px;
+    width: min(92vw, 600px);
+    padding-top: 45px;
+  }
+
+  .brand-subtitle {
+    display: none;
   }
 
   .hero {
-    margin-bottom: 44px;
+    margin-bottom: 50px;
   }
 
   .streak-card {
@@ -318,14 +1140,84 @@ footer {
   }
 
   .mode-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .agent-game-heading {
+    align-items: start;
+  }
+
+  .attempt-counter {
+    padding-left: 15px;
+  }
+
+  .agent-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-card {
+    min-height: 500px;
+  }
+
+  .agent-portrait {
+    height: 420px;
+  }
+}
+
+@media (max-width: 520px) {
+  .main-content {
+    width: 94vw;
+  }
+
+  .mode-grid {
     grid-template-columns: 1fr;
   }
 
   .mode-card {
-    min-height: 190px;
+    min-height: 175px;
   }
 
-  .section-heading {
-    align-items: start;
+  .agent-game-heading {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .attempt-counter {
+    border-left: 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding: 12px 0 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .clue-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-card {
+    min-height: 440px;
+  }
+
+  .agent-portrait {
+    height: 355px;
+  }
+
+  .guess-table {
+    overflow-x: auto;
+  }
+
+  .guess-table-header,
+  .guess-row {
+    min-width: 550px;
+  }
+
+  .game-over-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .game-over-card button {
+    width: 100%;
   }
 }
